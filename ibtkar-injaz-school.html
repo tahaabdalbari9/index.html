@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مدرسة الابتكار والإنجاز</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --orange:#E8600A;
+  --orange-light:#F5934A;
+  --orange-pale:#FFF3EC;
+  --teal:#0A7E8C;
+  --teal-light:#12B5C6;
+  --teal-pale:#E8F8FA;
+  --dark:#1A0E05;
+  --dark-mid:#2C1A0A;
+  --cream:#FDFAF6;
+  --white:#fff;
+  --text:#2A1A08;
+  --muted:#8A6A4A;
+  --border:#EDD9C0;
+}
+
+body{font-family:'Tajawal',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(26,14,5,0.96);backdrop-filter:blur(10px);
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0.85rem 2.5rem;
+  border-bottom:2px solid var(--orange);
+}
+.nav-brand{display:flex;align-items:center;gap:0.8rem;text-decoration:none}
+.nav-emblem{
+  width:42px;height:42px;border-radius:10px;
+  background:linear-gradient(135deg,var(--orange),var(--teal));
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;
+}
+.nav-name{color:#fff;font-size:0.95rem;font-weight:700;line-height:1.25}
+.nav-sub{color:var(--orange-light);font-size:0.68rem;letter-spacing:0.05em}
+.nav-links{display:flex;gap:1.75rem;list-style:none}
+.nav-links a{color:#A07050;text-decoration:none;font-size:0.87rem;transition:color .2s}
+.nav-links a:hover{color:var(--orange-light)}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  background:var(--dark);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:6rem 2rem 5rem;
+  position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 70% 50% at 30% 40%, rgba(232,96,10,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 60% at 75% 65%, rgba(10,126,140,0.1) 0%, transparent 70%);
+}
+.hero-grid{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(232,96,10,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232,96,10,0.04) 1px, transparent 1px);
+  background-size:60px 60px;
+  pointer-events:none;
+}
+
+.badge{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:rgba(232,96,10,0.12);border:1px solid rgba(232,96,10,0.35);
+  color:var(--orange-light);padding:6px 20px;border-radius:50px;
+  font-size:0.78rem;letter-spacing:0.08em;margin-bottom:2.5rem;
+  animation:fadeUp .7s ease both;
+}
+
+.hero-logo-ring{
+  width:140px;height:140px;border-radius:50%;
+  border:2px solid var(--orange);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 2rem;
+  background:rgba(232,96,10,0.06);
+  box-shadow:0 0 0 10px rgba(232,96,10,0.06),0 0 0 20px rgba(232,96,10,0.03);
+  position:relative;z-index:2;
+  animation:fadeUp .7s .1s ease both;
+}
+.hero-logo-ring::after{
+  content:'';position:absolute;inset:8px;border-radius:50%;
+  border:1px dashed rgba(232,96,10,0.25);
+}
+.hero-logo-inner{font-size:3.5rem;line-height:1}
+
+h1.hero-title{
+  font-family:'Amiri',serif;
+  font-size:clamp(2.8rem,7vw,5rem);
+  color:#fff;line-height:1.1;
+  animation:fadeUp .7s .2s ease both;
+}
+h1.hero-title .accent{
+  background:linear-gradient(90deg,var(--orange-light),var(--teal-light));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+
+.hero-sub{
+  font-size:1rem;color:#7A5A3A;max-width:480px;margin:1.25rem auto 0;
+  line-height:1.8;animation:fadeUp .7s .3s ease both;
+}
+
+/* RATING */
+.rating-pill{
+  display:inline-flex;align-items:center;gap:0.75rem;
+  background:rgba(255,255,255,0.05);border:1px solid rgba(255,220,100,0.2);
+  border-radius:50px;padding:0.6rem 1.5rem;margin-top:2rem;
+  animation:fadeUp .7s .4s ease both;
+}
+.rating-big{font-size:2rem;font-weight:900;color:#FFD060;font-family:'Tajawal',sans-serif}
+.rating-stars{color:#FFD060;font-size:1.1rem;letter-spacing:1px}
+.rating-count{font-size:0.78rem;color:#7A5A3A}
+
+.hero-cta{
+  display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
+  margin-top:2.5rem;animation:fadeUp .7s .5s ease both;
+}
+.btn-orange{
+  background:var(--orange);color:#fff;
+  padding:.85rem 2.2rem;border-radius:6px;
+  font-family:'Tajawal',sans-serif;font-size:1rem;font-weight:700;
+  text-decoration:none;border:none;cursor:pointer;
+  transition:background .2s,transform .15s;
+}
+.btn-orange:hover{background:var(--orange-light);transform:translateY(-3px)}
+.btn-border-orange{
+  background:transparent;color:var(--orange-light);
+  padding:.85rem 2.2rem;border-radius:6px;
+  font-family:'Tajawal',sans-serif;font-size:1rem;font-weight:500;
+  text-decoration:none;border:1.5px solid var(--orange);cursor:pointer;
+  transition:background .2s;
+}
+.btn-border-orange:hover{background:rgba(232,96,10,0.1)}
+
+/* STRIP */
+.strip{
+  background:linear-gradient(90deg,var(--orange),var(--teal));
+  display:flex;justify-content:center;gap:3rem;padding:1rem 2rem;flex-wrap:wrap;
+}
+.strip-item{display:flex;align-items:center;gap:.5rem;font-size:.88rem;font-weight:700;color:#fff}
+
+/* SECTION */
+.sw{padding:5rem 2rem}
+.si{max-width:1100px;margin:0 auto}
+.sh{text-align:center;margin-bottom:3.5rem}
+.stag{
+  display:inline-block;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--orange);background:var(--orange-pale);
+  padding:5px 16px;border-radius:50px;margin-bottom:.75rem;
+}
+.stag.teal{color:var(--teal);background:var(--teal-pale)}
+.stitle{font-family:'Amiri',serif;font-size:clamp(1.9rem,4vw,2.8rem);color:var(--text)}
+.stitle.light{color:#fff}
+
+/* PILLARS */
+.pillars-bg{background:#fff}
+.pillars-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.5rem}
+.pillar{
+  border-radius:14px;padding:2rem 1.5rem;text-align:center;
+  border:1.5px solid var(--border);
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+  background:var(--cream);
+}
+.pillar:hover{transform:translateY(-6px);border-color:var(--orange);box-shadow:0 12px 32px rgba(232,96,10,0.1)}
+.pillar-icon{width:68px;height:68px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 1.25rem}
+.pi-o{background:var(--orange-pale)}
+.pi-t{background:var(--teal-pale)}
+.pi-y{background:#FFF8E6}
+.pi-g{background:#EAF9F0}
+.pillar-name{font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:.5rem}
+.pillar-desc{font-size:.88rem;color:var(--muted);line-height:1.75}
+
+/* VISION MISSION */
+.vm-bg{background:var(--dark)}
+.vm-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}
+.vm-card{
+  border-radius:14px;padding:2.5rem 2rem;
+  border:1px solid rgba(255,255,255,0.07);
+}
+.vm-card.orange-card{background:rgba(232,96,10,0.1);border-color:rgba(232,96,10,0.25)}
+.vm-card.teal-card{background:rgba(10,126,140,0.1);border-color:rgba(10,126,140,0.25)}
+.vm-icon{font-size:2.5rem;display:block;margin-bottom:1rem}
+.vm-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--orange-light);margin-bottom:.5rem}
+.vm-card.teal-card .vm-label{color:var(--teal-light)}
+.vm-title{font-family:'Amiri',serif;font-size:1.6rem;color:#fff;margin-bottom:.75rem}
+.vm-text{font-size:.9rem;color:#8A6A4A;line-height:1.8}
+
+/* REVIEWS */
+.rv-bg{background:var(--cream)}
+.rv-summary{
+  background:#fff;border:1.5px solid var(--border);border-radius:14px;
+  padding:2rem;display:flex;align-items:center;gap:3rem;margin-bottom:2rem;flex-wrap:wrap;
+}
+.rv-big{text-align:center;min-width:100px}
+.rv-big .num{font-family:'Amiri',serif;font-size:5rem;color:var(--orange);line-height:1}
+.rv-big .stars{color:#FFD060;font-size:1.2rem}
+.rv-big .cnt{font-size:.78rem;color:var(--muted);margin-top:4px}
+.rv-bars{flex:1;min-width:180px}
+.bar-row{display:flex;align-items:center;gap:.75rem;margin-bottom:.4rem;font-size:.8rem;color:var(--muted)}
+.bar-bg{flex:1;height:6px;background:#EDD9C0;border-radius:3px;overflow:hidden}
+.bar-fill{height:100%;background:var(--orange);border-radius:3px}
+.rv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.rv-card{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:1.75rem}
+.rv-head{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem}
+.rv-avatar{
+  width:44px;height:44px;border-radius:50%;
+  background:linear-gradient(135deg,var(--orange),var(--teal));
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:.95rem;color:#fff;flex-shrink:0;
+}
+.rv-name{font-weight:700;font-size:.95rem;color:var(--text)}
+.rv-meta{font-size:.72rem;color:var(--muted);margin-top:2px}
+.rv-stars{color:#FFD060;font-size:.9rem;margin-bottom:.6rem}
+.rv-text{font-size:.88rem;color:var(--muted);line-height:1.7;font-style:italic}
+
+/* LOCATION */
+.loc-bg{background:var(--dark)}
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.loc-map{
+  background:var(--dark-mid);border-radius:16px;height:280px;
+  border:1.5px solid rgba(232,96,10,0.25);
+  display:flex;align-items:center;justify-content:center;text-align:center;
+}
+.loc-info{list-style:none}
+.loc-info li{display:flex;gap:1rem;align-items:flex-start;padding:1rem 0;border-bottom:1px solid rgba(255,255,255,0.06)}
+.loc-info li:last-child{border-bottom:none}
+.li-ic{width:40px;height:40px;border-radius:10px;background:rgba(232,96,10,0.12);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.li-lbl{font-size:.72rem;color:#6A4A2A}
+.li-val{font-size:.95rem;font-weight:600;color:#fff;margin-top:2px}
+
+/* CTA */
+.cta-wrap{
+  background:linear-gradient(135deg,#1A0E05 0%,#0A2020 100%);
+  text-align:center;padding:5rem 2rem;
+  border-top:2px solid var(--orange);
+}
+.cta-wrap h2{font-family:'Amiri',serif;font-size:clamp(2rem,5vw,3rem);color:#fff;margin-bottom:.75rem}
+.cta-wrap p{color:#7A5A3A;font-size:.95rem;margin-bottom:2.5rem}
+
+/* FOOTER */
+footer{background:#0D0803;border-top:1px solid rgba(232,96,10,0.2);text-align:center;padding:2.5rem 2rem}
+.foot-logo{font-family:'Amiri',serif;font-size:1.8rem;color:var(--orange-light);margin-bottom:.5rem}
+footer p{font-size:.82rem;color:#5A3A1A}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:700px){
+  .nav-links{display:none}
+  .vm-grid{grid-template-columns:1fr}
+  .loc-grid{grid-template-columns:1fr}
+  .hero-title{font-size:2.5rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand">
+    <div class="nav-emblem">💡</div>
+    <div>
+      <div class="nav-name">مدرسة الابتكار والإنجاز</div>
+      <div class="nav-sub">مأدبا · الأردن</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">عن المدرسة</a></li>
+    <li><a href="#vision">رؤيتنا</a></li>
+    <li><a href="#reviews">التقييمات</a></li>
+    <li><a href="#location">موقعنا</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="badge">✦ مؤسسة تعليمية · مأدبا، الأردن</div>
+
+  <div class="hero-logo-ring">
+    <div class="hero-logo-inner">🚀</div>
+  </div>
+
+  <h1 class="hero-title">
+    مدرسة <span class="accent">الابتكار</span><br>والإنجاز
+  </h1>
+
+  <p class="hero-sub">
+    مؤسسة تعليمية رائدة في مأدبا تُؤمن بأن كل طالب يمتلك طاقة إبداعية تستحق أن تُكتشف وتُنمّى
+  </p>
+
+  <div class="rating-pill">
+    <div class="rating-big">5.0</div>
+    <div>
+      <div class="rating-stars">★★★★★</div>
+      <div class="rating-count">3 تقييمات · تقييم مثالي</div>
+    </div>
+  </div>
+
+  <div class="hero-cta">
+    <a href="#location" class="btn-orange">📍 زر المدرسة</a>
+    <a href="#about" class="btn-border-orange">اعرف أكثر</a>
+  </div>
+</div>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-item"><span>💡</span> ابتكار وإبداع</div>
+  <div class="strip-item"><span>🏆</span> إنجاز متميز</div>
+  <div class="strip-item"><span>📚</span> تعليم أساسي</div>
+  <div class="strip-item"><span>📍</span> مأدبا، الأردن</div>
+</div>
+
+<!-- PILLARS -->
+<div class="pillars-bg sw" id="about">
+  <div class="si">
+    <div class="sh">
+      <span class="stag">ما يميّزنا</span>
+      <h2 class="stitle">أركان مدرستنا</h2>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="pillar-icon pi-o">🔬</div>
+        <h3 class="pillar-name">التفكير الإبداعي</h3>
+        <p class="pillar-desc">نُشجع الطلاب على التفكير خارج الصندوق وإيجاد حلول مبتكرة للمشكلات</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon pi-t">🎯</div>
+        <h3 class="pillar-name">التميز الأكاديمي</h3>
+        <p class="pillar-desc">نسعى لتحقيق أعلى مستويات التحصيل الدراسي مع الحفاظ على متعة التعلم</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon pi-y">🌟</div>
+        <h3 class="pillar-name">اكتشاف المواهب</h3>
+        <p class="pillar-desc">برامج متنوعة لرصد وتطوير مواهب الطلاب في مختلف المجالات</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon pi-g">🤝</div>
+        <h3 class="pillar-name">بيئة داعمة</h3>
+        <p class="pillar-desc">كادر تربوي متفانٍ يعمل على بناء جو مدرسي آمن ومحفز للنمو</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VISION / MISSION -->
+<div class="vm-bg sw" id="vision">
+  <div class="si">
+    <div class="sh">
+      <span class="stag" style="color:var(--orange-light);background:rgba(232,96,10,0.15)">رؤيتنا ورسالتنا</span>
+      <h2 class="stitle light">نبني اليوم لغد أفضل</h2>
+    </div>
+    <div class="vm-grid">
+      <div class="vm-card orange-card">
+        <span class="vm-icon">🔭</span>
+        <div class="vm-label">رؤيتنا</div>
+        <h3 class="vm-title">أن نكون مدرسة الخيار الأول</h3>
+        <p class="vm-text">نطمح إلى أن تكون مدرسة الابتكار والإنجاز المرجع التعليمي الأول في مأدبا، ونموذجاً يُحتذى به في تطوير الجيل الجديد من المبدعين والمنجزين في الأردن والعالم العربي.</p>
+      </div>
+      <div class="vm-card teal-card">
+        <span class="vm-icon">🎓</span>
+        <div class="vm-label">رسالتنا</div>
+        <h3 class="vm-title">تعليم يُلهم وينجز</h3>
+        <p class="vm-text">تقديم تعليم أساسي متميز يجمع بين الأصالة والمعاصرة، يُنمّي قدرات الطلاب الفكرية والإبداعية والأخلاقية، ويُعدّهم ليكونوا مواطنين صالحين ومبدعين في مجتمعهم.</p>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin-top:2rem">
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(232,96,10,0.15);border-radius:12px;padding:1.75rem;text-align:center">
+        <div style="font-size:2.5rem;font-weight:900;color:var(--orange-light);font-family:'Tajawal',sans-serif">5.0</div>
+        <div style="font-size:.78rem;color:#6A4A2A;margin-top:4px">تقييم مثالي على جوجل</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(10,126,140,0.2);border-radius:12px;padding:1.75rem;text-align:center">
+        <div style="font-size:2.5rem;font-weight:900;color:var(--teal-light)">📚</div>
+        <div style="font-size:.78rem;color:#6A4A2A;margin-top:4px">تعليم أساسي شامل</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(232,96,10,0.15);border-radius:12px;padding:1.75rem;text-align:center">
+        <div style="font-size:2.5rem;font-weight:900;color:var(--orange-light)">🏅</div>
+        <div style="font-size:.78rem;color:#6A4A2A;margin-top:4px">مؤسسة تعليمية معتمدة</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(10,126,140,0.2);border-radius:12px;padding:1.75rem;text-align:center">
+        <div style="font-size:2.5rem;font-weight:900;color:var(--teal-light)">🌍</div>
+        <div style="font-size:.78rem;color:#6A4A2A;margin-top:4px">مأدبا · الأردن</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<div class="rv-bg sw" id="reviews">
+  <div class="si">
+    <div class="sh">
+      <span class="stag teal">آراء الأهالي</span>
+      <h2 class="stitle">التقييمات</h2>
+    </div>
+
+    <div class="rv-summary">
+      <div class="rv-big">
+        <div class="num">5.0</div>
+        <div class="stars">★★★★★</div>
+        <div class="cnt">3 تقييمات</div>
+      </div>
+      <div class="rv-bars">
+        <div class="bar-row">
+          <span>5 ★</span>
+          <div class="bar-bg"><div class="bar-fill" style="width:100%"></div></div>
+          <span>100%</span>
+        </div>
+        <div class="bar-row">
+          <span>4 ★</span>
+          <div class="bar-bg"><div class="bar-fill" style="width:0%"></div></div>
+          <span>0%</span>
+        </div>
+        <div class="bar-row">
+          <span>3 ★</span>
+          <div class="bar-bg"><div class="bar-fill" style="width:0%"></div></div>
+          <span>0%</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:.8rem;color:var(--muted);margin-bottom:.5rem">تقييم مثالي ⭐</div>
+        <div style="background:var(--orange-pale);border:1px solid var(--orange);color:var(--orange);padding:8px 18px;border-radius:6px;font-size:.85rem;font-weight:700;">
+          5.0 / 5.0
+        </div>
+      </div>
+    </div>
+
+    <div class="rv-grid">
+      <div class="rv-card">
+        <div class="rv-head">
+          <div class="rv-avatar">م</div>
+          <div>
+            <div class="rv-name">Mohammed Massandeh</div>
+            <div class="rv-meta">270 مراجعة · 86 صورة · منذ 7 سنوات</div>
+          </div>
+        </div>
+        <div class="rv-stars">★★★★★</div>
+        <p class="rv-text">مكان للتعليم الأساسي — تجربة تعليمية متميزة تستحق الزيارة.</p>
+      </div>
+      <div class="rv-card">
+        <div class="rv-head">
+          <div class="rv-avatar" style="background:linear-gradient(135deg,var(--teal),#0A4A5A)">خ</div>
+          <div>
+            <div class="rv-name">Khalil Alshmary</div>
+            <div class="rv-meta">مرشد محلي · 16 مراجعة · منذ شهرين</div>
+          </div>
+        </div>
+        <div class="rv-stars">★★★★★</div>
+        <p class="rv-text">مدرسة متميزة في مأدبا، بيئة تعليمية راقية ومشجعة للابتكار.</p>
+      </div>
+      <div class="rv-card">
+        <div class="rv-head">
+          <div class="rv-avatar" style="background:linear-gradient(135deg,#8B4513,#5A2D0C)">م</div>
+          <div>
+            <div class="rv-name">Mosab Hmemat</div>
+            <div class="rv-meta">3 مراجعات · 9 صور · منذ 3 سنوات</div>
+          </div>
+        </div>
+        <div class="rv-stars">★★★★★</div>
+        <p class="rv-text">مؤسسة تعليمية جديرة بالثقة، تهتم بتطوير الطالب أكاديمياً وشخصياً.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LOCATION -->
+<div class="loc-bg sw" id="location">
+  <div class="si">
+    <div class="sh">
+      <span class="stag" style="color:var(--orange-light);background:rgba(232,96,10,0.15)">أين نحن؟</span>
+      <h2 class="stitle light">موقع المدرسة</h2>
+    </div>
+    <div class="loc-grid">
+      <div class="loc-map">
+        <div>
+          <div style="font-size:3.5rem;margin-bottom:1rem">📍</div>
+          <div style="color:#8A6A4A;font-size:.88rem;margin-bottom:1.25rem;line-height:1.6">
+            مأدبا، الأردن<br>
+            <span style="font-size:.75rem;color:#5A3A1A">PQ8J+55H، مأدبا</span>
+          </div>
+          <a href="https://maps.google.com/?q=PQ8J+55H+مأدبا" target="_blank"
+             style="display:inline-block;background:var(--orange);color:#fff;padding:9px 22px;border-radius:6px;font-size:.85rem;font-weight:700;text-decoration:none">
+            افتح في الخرائط ↗
+          </a>
+        </div>
+      </div>
+      <ul class="loc-info">
+        <li>
+          <div class="li-ic">📍</div>
+          <div>
+            <div class="li-lbl">العنوان</div>
+            <div class="li-val">مأدبا، المملكة الأردنية الهاشمية</div>
+          </div>
+        </li>
+        <li>
+          <div class="li-ic">🗺️</div>
+          <div>
+            <div class="li-lbl">Plus Code</div>
+            <div class="li-val">PQ8J+55H</div>
+          </div>
+        </li>
+        <li>
+          <div class="li-ic">🏫</div>
+          <div>
+            <div class="li-lbl">نوع المؤسسة</div>
+            <div class="li-val">مؤسسة تعليمية أساسية</div>
+          </div>
+        </li>
+        <li>
+          <div class="li-ic">⭐</div>
+          <div>
+            <div class="li-lbl">التقييم</div>
+            <div class="li-val">5.0 من 5 — تقييم مثالي</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-wrap">
+  <h2>ابدأ رحلة الابتكار والإنجاز</h2>
+  <p>انضم إلى مجتمعنا التعليمي المتميز في مأدبا</p>
+  <div class="hero-cta">
+    <a href="https://maps.google.com/?q=PQ8J+55H+مأدبا" target="_blank" class="btn-orange">📍 زرنا الآن</a>
+    <a href="#about" class="btn-border-orange">تعرّف علينا أكثر</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-logo">مدرسة الابتكار والإنجاز</div>
+  <p style="color:#5A3A1A;margin-bottom:.4rem">مأدبا · المملكة الأردنية الهاشمية</p>
+  <p>© 2025 مدرسة الابتكار والإنجاز · جميع الحقوق محفوظة</p>
+</footer>
+
+</body>
+</html>
